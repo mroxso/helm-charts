@@ -13,7 +13,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: master
-    created: "2023-04-23T18:46:48.671938+02:00"
+    created: "2023-04-23T18:18:46.186557+02:00"
     description: A Helm chart for LNBits in Kubernetes
     digest: 0558e9d49941cdf1cff86b07c08ff4de48f0869933a3aa0d4c5fed30a963787a
     name: lnbits
@@ -23,7 +23,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: master
-    created: "2023-04-23T18:46:48.67147+02:00"
+    created: "2023-04-23T18:00:48.67147+02:00"
     description: A Helm chart for LNBits in Kubernetes
     digest: 243f691da1cb5f5789f70d1ad3ce6471c00126f600ed4b5b4dbee407c4b026ae
     name: lnbits
