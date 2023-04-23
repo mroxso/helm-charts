@@ -117,7 +117,7 @@ config:
       #           to use CockroachDB, specify LNBITS_DATABASE_URL=cockroachdb://...
       # for both PostgreSQL and CockroachDB, you'll need to install
       #   psycopg2 as an additional dependency
-      LNBITS_DATA_FOLDER="./data"
+      LNBITS_DATA_FOLDER="/app/lnbits/data"
       # LNBITS_DATABASE_URL="postgres://user:password@host:port/databasename"
 
       LNBITS_FORCE_HTTPS=true
