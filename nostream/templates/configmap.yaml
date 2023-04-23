@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "nostream.fullname" . }}
+#   namespace: default
+  labels:
+    {{- include "nostream.labels" . | nindent 4 }}
+data:
+  settings.yaml: |
+    {{ .Values.config | nindent 4 }}
