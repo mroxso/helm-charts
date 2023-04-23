@@ -1,0 +1,10 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "nostr-rs-relay.fullname" . }}
+#   namespace: default
+  labels:
+    {{- include "nostr-rs-relay.labels" . | nindent 4 }}
+data:
+  config.toml: |
+    {{ .Values.config | nindent 4 }}
