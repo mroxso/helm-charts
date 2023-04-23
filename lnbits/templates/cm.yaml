@@ -3,7 +3,6 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: {{ include "lnbits.fullname" . }}-config
-  namespace: default
 data:
   .env: |
     {{ .Values.config.data | nindent 4 }}
