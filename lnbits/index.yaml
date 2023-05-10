@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   lnbits:
   - apiVersion: v2
+    appVersion: 0.10.6
+    created: "2023-05-10T08:03:39.415651985Z"
+    description: A Helm chart for LNBits in Kubernetes
+    digest: a27eddb14d7fc5a23e70f359ac3ca4c7055567667667c2dd2c356ed891707897
+    name: lnbits
+    type: application
+    urls:
+    - lnbits-0.2.1.tgz
+    version: 0.2.1
+  - apiVersion: v2
     appVersion: 0.10.5
-    created: "2023-05-05T12:12:51.533982+02:00"
+    created: "2023-05-10T08:03:39.414230749Z"
     description: A Helm chart for LNBits in Kubernetes
     digest: b2527c13ccaaceda64ef2808fe2c279a13d95cb7624970e1ccf7206395ad529e
     name: lnbits
@@ -13,7 +23,7 @@ entries:
     version: 0.2.0
   - apiVersion: v2
     appVersion: master
-    created: "2023-05-05T12:12:51.53264+02:00"
+    created: "2023-05-10T08:03:39.376374587Z"
     description: A Helm chart for LNBits in Kubernetes
     digest: 76c7352bfe24ccdac9667e8e368ff4fc5680fca0e38271bf4bbbe8f4250a2baa
     name: lnbits
@@ -21,4 +31,4 @@ entries:
     urls:
     - lnbits-0.1.2.tgz
     version: 0.1.2
-generated: "2023-05-05T12:12:51.531552+02:00"
+generated: "2023-05-10T08:03:39.375495565Z"
