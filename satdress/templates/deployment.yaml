@@ -47,6 +47,19 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          env:
+          - name: DOMAIN
+            value: {{ .Values.config.domain }}
+          - name: PORT
+            value: {{ .Values.service.port }}
+          - name: SECRET
+            value: {{ .Values.config.secret }}
+          - name: SITE_OWNER_URL
+            value: {{ .Values.config.siteOwnerUrl }}
+          - name: SITE_OWNER_NAME
+            value: {{ .Values.config.siteOwnerName }}
+          - name: SITE_NAME
+            value: {{ .Values.config.siteName }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
