@@ -21,6 +21,10 @@ config:
   SITE_OWNER_NAME: "satdress"
   SITE_NAME: "SatDress"
 
+persistence:
+  enabled: false
+  size: 10Gi
+
 serviceAccount:
   # Specifies whether a service account should be created
   create: true

@@ -60,6 +60,17 @@ spec:
             value: {{ .Values.config.siteOwnerName }}
           - name: SITE_NAME
             value: {{ .Values.config.siteName }}
+      {{- if .Values.persistence.enabled }}
+          volumeMounts:
+            - name: satdress-data
+              mountPath: /{{ .Values.config.domain }}
+      {{- end }}
+      {{- if .Values.persistence.enabled }}
+      volumes:
+        - name: satdress-data
+          persistentVolumeClaim:
+            claimName: {{ include "satdress.fullname" . }}
+      {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
