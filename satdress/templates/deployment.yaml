@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "satdress.fullname" . }}
+  labels:
+    {{- include "satdress.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "satdress.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "satdress.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "satdress.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+          env:
+          - name: DOMAIN
+            value: "{{ .Values.config.DOMAIN }}"
+          - name: PORT
+            value: "{{ .Values.service.port }}"
+          - name: SECRET
+            value: "{{ .Values.config.SECRET }}"
+          - name: SITE_OWNER_URL
+            value: "{{ .Values.config.SITE_OWNER_URL }}"
+          - name: SITE_OWNER_NAME
+            value: "{{ .Values.config.SITE_OWNER_NAME }}"
+          - name: SITE_NAME
+            value: "{{ .Values.config.SITE_NAME }}"
+      {{- if .Values.persistence.enabled }}
+          volumeMounts:
+            - name: satdress-data
+              mountPath: /{{ .Values.config.domain }}
+      {{- end }}
+      {{- if .Values.persistence.enabled }}
+      volumes:
+        - name: satdress-data
+          persistentVolumeClaim:
+            claimName: {{ include "satdress.fullname" . }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
