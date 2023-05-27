@@ -49,17 +49,17 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           env:
           - name: DOMAIN
-            value: {{ .Values.config.domain }}
+            value: "{{ .Values.config.DOMAIN }}"
           - name: PORT
-            value: {{ .Values.service.port }}
+            value: "{{ .Values.service.port }}"
           - name: SECRET
-            value: {{ .Values.config.secret }}
+            value: "{{ .Values.config.SECRET }}"
           - name: SITE_OWNER_URL
-            value: {{ .Values.config.siteOwnerUrl }}
+            value: "{{ .Values.config.SITE_OWNER_URL }}"
           - name: SITE_OWNER_NAME
-            value: {{ .Values.config.siteOwnerName }}
+            value: "{{ .Values.config.SITE_OWNER_NAME }}"
           - name: SITE_NAME
-            value: {{ .Values.config.siteName }}
+            value: "{{ .Values.config.SITE_NAME }}"
       {{- if .Values.persistence.enabled }}
           volumeMounts:
             - name: satdress-data
