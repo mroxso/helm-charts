@@ -48,20 +48,24 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:
+          {{- if .Values.persistence.enabled }}
           - mountPath: "/usr/src/app/db"
             name: nostr-data
             readOnly: false
+          {{- end }}
           - mountPath: "/usr/src/app/config.toml"
             subPath: "config.toml"
             name: nostr-config
           # command: ["./"]
           # args: ["--config", "/usr/src/app/config.toml"]
       volumes:
+      {{- if .Values.persistence.enabled }}
         - name: nostr-data
           # emptyDir:
           #   sizeLimit: 10Gi
           persistentVolumeClaim:
             claimName: {{ include "nostr-rs-relay.fullname" . }}
+      {{- end }}
         - name: nostr-config
           configMap:
             name: {{ include "nostr-rs-relay.fullname" . }}

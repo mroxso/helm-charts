@@ -7,4 +7,4 @@ metadata:
     {{- include "nostr-rs-relay.labels" . | nindent 4 }}
 data:
   config.toml: |
-    {{ .Values.config | nindent 4 }}
+    {{ .Values.data | nindent 4 }}
