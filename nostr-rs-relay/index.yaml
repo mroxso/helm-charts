@@ -3,7 +3,17 @@ entries:
   nostr-rs-relay:
   - apiVersion: v2
     appVersion: latest
-    created: "2023-05-10T08:33:55.798146028Z"
+    created: "2023-06-26T20:53:02.398967+02:00"
+    description: A Helm chart for a Nostr Relay on Kubernetes
+    digest: e805ec6275b459debd14a5009001055426fa9cb8d82e80f270d95328414c9053
+    name: nostr-rs-relay
+    type: application
+    urls:
+    - nostr-rs-relay-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: latest
+    created: "2023-06-26T20:53:02.398067+02:00"
     description: A Helm chart for a Nostr Relay on Kubernetes
     digest: 45a3746ed46118583d4d65d3144941f253b95164561eaac6070ee119c0de861c
     name: nostr-rs-relay
@@ -13,7 +23,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 0.8.2
-    created: "2023-05-10T08:33:55.796422609Z"
+    created: "2023-06-26T20:53:02.397446+02:00"
     description: A Helm chart for a Nostr Relay on Kubernetes
     digest: 3df7cfb5a0adf8bd4f321e3f13e26e5b06a3215ec3725231a30a63c7dfa6eef4
     name: nostr-rs-relay
@@ -21,4 +31,4 @@ entries:
     urls:
     - nostr-rs-relay-0.1.0.tgz
     version: 0.1.0
-generated: "2023-05-10T08:33:55.794936393Z"
+generated: "2023-06-26T20:53:02.396509+02:00"
